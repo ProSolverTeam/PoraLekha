@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:pora_lekha/QuestionScreen/QuestionScreen_page.dart';
 
 void main() => runApp(const MyApp());
 
@@ -22,7 +24,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-List<String> nav_item = ['Favorites', 'Sound', 'Places', 'News'];
+List<String> nav_item = ['Favorites', 'Questions', 'Places', 'News'];
 int index = 0;
 List<Color> color = [Colors.red, Colors.lime, Colors.green, Colors.white];
 
@@ -46,6 +48,10 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             _currentIndex = value;
             index = _currentIndex;
+            print(MediaQuery.of(context).size.height);
+            print(MediaQuery.of(context).size.width);
+            Navigator.push(context,
+                MaterialPageRoute(builder: (context) => QuestionScreenPage()));
           });
         },
         items: const [
@@ -54,8 +60,8 @@ class _MyHomePageState extends State<MyHomePage> {
             icon: Icon(Icons.favorite),
           ),
           BottomNavigationBarItem(
-            label: 'Sound',
-            icon: Icon(Icons.speaker),
+            label: 'Questions',
+            icon: Icon(Icons.question_answer),
           ),
           BottomNavigationBarItem(
             label: 'Places',
@@ -84,7 +90,10 @@ class BodyWidget extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(nav_item[index]),
+            Text(
+              nav_item[index],
+              style: TextStyle(color: Colors.cyan),
+            ),
           ],
         ),
       ),
