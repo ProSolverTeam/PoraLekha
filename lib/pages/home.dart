@@ -9,7 +9,7 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-List<String> nav_item = ['Favorites', 'Questions', 'Places', 'News'];
+List<String> navItem = ['Favorites', 'Questions', 'Places', 'News'];
 int index = 0;
 List<Color> color = [Colors.red, Colors.lime, Colors.green, Colors.white];
 
@@ -76,7 +76,7 @@ class BodyWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Text(
-              nav_item[index],
+              navItem[index],
               style: TextStyle(color: Colors.cyan),
             ),
           ],

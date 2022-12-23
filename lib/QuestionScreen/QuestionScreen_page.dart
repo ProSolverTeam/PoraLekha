@@ -1,6 +1,10 @@
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:pora_lekha/utils/dimensions/Dimensions.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+
+final db = FirebaseFirestore.instance;
 
 class QuestionScreenPage extends StatefulWidget {
   const QuestionScreenPage({super.key});
@@ -14,6 +18,8 @@ class _QuestionScreenPageState extends State<QuestionScreenPage> {
   //String gender = "male"; //if you want to set default value
   String answer = "13";
   double marks = 0;
+  final nameController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,7 +68,30 @@ class _QuestionScreenPageState extends State<QuestionScreenPage> {
                   groupValue = value.toString();
                 });
               },
-            )
+            ),
+            Expanded(
+              child: Container(
+                child: TextFormField(
+                  controller: nameController,
+                  decoration: InputDecoration(),
+                ),
+              ),
+            ),
+            GestureDetector(
+              onTap: () => getData(),
+              child: Center(
+                child: Container(
+                  child: Text("get user"),
+                ),
+              ),
+            ),
+            Expanded(
+              child: SingleChildScrollView(
+                child: Container(
+                  child: Text("data"),
+                ),
+              ),
+            ),
           ],
         ),
       ),
@@ -87,5 +116,59 @@ class _QuestionScreenPageState extends State<QuestionScreenPage> {
     if (kDebugMode) {
       print(marks);
     }
+
+    /* await db.collection('user').doc();
+    print(nameController.text); */
+
+    /* final user = db.collection('user').doc().snapshots().map((doc) {
+      print(doc);
+    });
+    print(user); */
+
+    /* db.collection("users").add({
+      "FirstName": "Ronee",
+      "MiddleName": "M",
+      "LastName": "Rayhan",
+      "DoB": 26061991,
+      "Mobile # ": nameController.text,
+    }).then(
+      (value) => print(value.id),
+    ); */
+
+    db.collection("users").add({
+      "Name": {"FirstName": "Ronee", "MiddleName": "M", "LastName": "Rayhan"},
+      "DoBs": [26061991, 28021989],
+      "Mobile # ": nameController.text,
+    }).then(
+      (DocumentReference value) =>
+          print('DocumentSnapshot added with ID: ${value.id}'),
+    );
   }
+
+  void getData() {
+    db.collection("users").get().then((value) {
+      for (var doc in value.docs) {
+        //print("${doc.id}=>${doc.data}");
+        //print(doc.data());
+        //print(doc.data().length);
+        //print(doc.data().isEmpty);
+        //print(doc.data.call());
+        //print(doc["Name"]);
+        print(doc['Mobile # ']);
+
+        /* if (doc["Name"] != isBlank) {
+          print(doc["Name"]["FirstName"]);
+        } */
+        if (doc["Name"] != null) {
+          print(doc["Name"]["LastName"]);
+        }
+      }
+    });
+  }
+
+  /* final messageRef = db
+        .collection("rooms")
+        .doc("roomA")
+        .collection("messages")
+        .doc("message1"); */
 }
