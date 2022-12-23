@@ -1,57 +1,15 @@
-/* import 'package:get/get.dart';
-import 'package:flutter/material.dart';
-import './QuestionScreen_controller.dart';
-
-class QuestionScreenPage extends GetView<QuestionScreenController> {
-  QuestionScreenPage({Key? key}) : super(key: key);
-
-  final String welcomeMessage = QuestionScreenController.message;
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.lime,
-        title: const Text('QuestionScreenPage'),
-      ),
-      body: Container(
-        child: Card(
-          child: Radio(
-            value: 1,
-            groupValue: "1",
-            onChanged: (int) => print(int),
-          ),
-        ),
-      ),
-    );
-  }
-} */
-
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:pora_lekha/dimensions/Dimensions.dart';
+import 'package:pora_lekha/utils/dimensions/Dimensions.dart';
 
-void main() {
-  runApp(const QuestionScreenPage());
-}
-
-class QuestionScreenPage extends StatelessWidget {
+class QuestionScreenPage extends StatefulWidget {
   const QuestionScreenPage({super.key});
 
   @override
-  Widget build(BuildContext context) {
-    return const MaterialApp(home: Home());
-  }
+  State<QuestionScreenPage> createState() => _QuestionScreenPageState();
 }
 
-class Home extends StatefulWidget {
-  const Home({super.key});
-
-  @override
-  State<Home> createState() => _HomeState();
-}
-
-class _HomeState extends State<Home> {
+class _QuestionScreenPageState extends State<QuestionScreenPage> {
   String? groupValue; //no radio button will be selected
   //String gender = "male"; //if you want to set default value
   String answer = "13";
