@@ -1,8 +1,0 @@
-version: "Apple Swift version 5.6.1 (swiftlang-5.6.0.323.66 clang-1316.0.20.12)"
-options: "9a1a92567da5ba281853eeb8aa848932366c22d4c906cd6a3183548b7eafb970"
-build_start_time: [1671305295, 385050058]
-build_end_time: [1671305295, 767966985]
-inputs:
-  "/Users/roneemrayhan/ProSolverTeam/pora_lekha/macos/Flutter/GeneratedPluginRegistrant.swift": [1671305290, 483497142]
-  "/Users/roneemrayhan/ProSolverTeam/pora_lekha/macos/Runner/AppDelegate.swift": [1668951525, 839529037]
-  "/Users/roneemrayhan/ProSolverTeam/pora_lekha/macos/Runner/MainFlutterWindow.swift": [1668951525, 844323158]
