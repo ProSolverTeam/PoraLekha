@@ -49,7 +49,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '921274923536',
     projectId: 'pora-lekha-65fd6',
     authDomain: 'pora-lekha-65fd6.firebaseapp.com',
-    databaseURL: 'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'pora-lekha-65fd6.appspot.com',
     measurementId: 'G-MEQRM889TB',
   );
@@ -59,7 +60,8 @@ class DefaultFirebaseOptions {
     appId: '1:921274923536:android:e340e53d14836055e86895',
     messagingSenderId: '921274923536',
     projectId: 'pora-lekha-65fd6',
-    databaseURL: 'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'pora-lekha-65fd6.appspot.com',
   );
 
@@ -68,9 +70,11 @@ class DefaultFirebaseOptions {
     appId: '1:921274923536:ios:4791d457c273d348e86895',
     messagingSenderId: '921274923536',
     projectId: 'pora-lekha-65fd6',
-    databaseURL: 'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'pora-lekha-65fd6.appspot.com',
-    iosClientId: '921274923536-piqrnu9evkismooj77028b6vd7gdi6fr.apps.googleusercontent.com',
+    iosClientId:
+        '921274923536-piqrnu9evkismooj77028b6vd7gdi6fr.apps.googleusercontent.com',
     iosBundleId: 'com.example.poraLekha',
   );
 
@@ -79,9 +83,11 @@ class DefaultFirebaseOptions {
     appId: '1:921274923536:ios:4791d457c273d348e86895',
     messagingSenderId: '921274923536',
     projectId: 'pora-lekha-65fd6',
-    databaseURL: 'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
+    databaseURL:
+        'https://pora-lekha-65fd6-default-rtdb.asia-southeast1.firebasedatabase.app',
     storageBucket: 'pora-lekha-65fd6.appspot.com',
-    iosClientId: '921274923536-piqrnu9evkismooj77028b6vd7gdi6fr.apps.googleusercontent.com',
+    iosClientId:
+        '921274923536-piqrnu9evkismooj77028b6vd7gdi6fr.apps.googleusercontent.com',
     iosBundleId: 'com.example.poraLekha',
   );
 }

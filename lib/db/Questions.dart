@@ -1,3 +1,1 @@
-class Questions {
-
-}
+class Questions {}

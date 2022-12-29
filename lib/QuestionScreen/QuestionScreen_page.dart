@@ -5,6 +5,7 @@ import 'package:pora_lekha/utils/dimensions/Dimensions.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 final db = FirebaseFirestore.instance;
+List<String> names = ["RMR", "ggg", "yyy"];
 
 class QuestionScreenPage extends StatefulWidget {
   const QuestionScreenPage({super.key});
@@ -21,79 +22,96 @@ class _QuestionScreenPageState extends State<QuestionScreenPage> {
   final nameController = TextEditingController();
 
   @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Radio Button in Flutter"),
         backgroundColor: Colors.deepOrangeAccent,
       ),
-      body: Container(
-        height: Dimensions.height20 * 15,
-        width: Dimensions.width20 * 15,
-        color: Colors.amber,
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            const Text(
-              "9+4=?",
-              style: TextStyle(fontSize: 18),
-            ),
-            const Divider(),
-            RadioListTile(
-              title: const Text("10"),
-              value: "10",
-              groupValue: groupValue,
-              onChanged: (value) {
-                setState(() {
-                  groupValue = value.toString();
-                });
-              },
-            ),
-            RadioListTile(
-              title: const Text("13"),
-              value: "13",
-              groupValue: groupValue,
-              onChanged: (value) {
-                setState(() {
-                  groupValue = value.toString();
-                });
-              },
-            ),
-            RadioListTile(
-              title: const Text("16"),
-              value: "16",
-              groupValue: groupValue,
-              onChanged: (value) {
-                setState(() {
-                  groupValue = value.toString();
-                });
-              },
-            ),
-            Expanded(
-              child: Container(
-                child: TextFormField(
-                  controller: nameController,
-                  decoration: InputDecoration(),
+      body: Column(
+        children: [
+          Container(
+            height: Dimensions.height20 * 30,
+            width: Dimensions.width20 * 30,
+            color: Colors.amber,
+            padding: const EdgeInsets.all(20),
+            child: Column(
+              children: [
+                const Text(
+                  "9+4=?",
+                  style: TextStyle(fontSize: 18),
                 ),
-              ),
-            ),
-            GestureDetector(
-              onTap: () => getData(),
-              child: Center(
-                child: Container(
-                  child: Text("get user"),
+                const Divider(),
+                RadioListTile(
+                  title: const Text("10"),
+                  value: "10",
+                  groupValue: groupValue,
+                  onChanged: (value) {
+                    setState(() {
+                      groupValue = value.toString();
+                    });
+                  },
                 ),
-              ),
-            ),
-            Expanded(
-              child: SingleChildScrollView(
-                child: Container(
-                  child: Text("data"),
+                RadioListTile(
+                  title: const Text("13"),
+                  value: "13",
+                  groupValue: groupValue,
+                  onChanged: (value) {
+                    setState(() {
+                      groupValue = value.toString();
+                    });
+                  },
                 ),
-              ),
+                RadioListTile(
+                  title: const Text("16"),
+                  value: "16",
+                  groupValue: groupValue,
+                  onChanged: (value) {
+                    setState(() {
+                      groupValue = value.toString();
+                    });
+                  },
+                ),
+                Expanded(
+                  child: Container(
+                    child: TextFormField(
+                      controller: nameController,
+                      decoration: InputDecoration(),
+                    ),
+                  ),
+                ),
+                GestureDetector(
+                  onTap: () => getData(),
+                  child: Center(
+                    child: Container(
+                      child: const Text("get user"),
+                    ),
+                  ),
+                ),
+              ],
             ),
-          ],
-        ),
+          ),
+          /* Container(
+            child: SingleChildScrollView(
+              child: ListView.builder(
+                itemCount: 3,
+                itemBuilder: (context, index) {
+                  return Text(names[index]);
+                  
+                },
+                
+              ),
+              
+            ),
+          ),
+          Text(names[0]) */
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         onPressed: submit,
@@ -143,6 +161,7 @@ class _QuestionScreenPageState extends State<QuestionScreenPage> {
       (DocumentReference value) =>
           print('DocumentSnapshot added with ID: ${value.id}'),
     );
+    Get.toNamed('student-list-screen');
   }
 
   void getData() {
@@ -160,10 +179,15 @@ class _QuestionScreenPageState extends State<QuestionScreenPage> {
           print(doc["Name"]["FirstName"]);
         } */
         if (doc["Name"] != null) {
-          print(doc["Name"]["LastName"]);
+          print(doc["Name"]["LastName"].toString());
+          names.add(doc["Name"]["LastName"].toString());
+          print(names);
         }
+        print(names);
+        Get.toNamed('/user-list-page');
       }
     });
+    //setState(() {});
   }
 
   /* final messageRef = db
