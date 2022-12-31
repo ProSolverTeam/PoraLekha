@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../QuestionScreen/QuestionScreen_page.dart';
 
@@ -30,14 +31,36 @@ class _MyHomePageState extends State<MyHomePage> {
         unselectedLabelStyle: textTheme.caption,
         onTap: (value) {
           // Respond to item press.
-          setState(() {
-            _currentIndex = value;
-            index = _currentIndex;
-            print(MediaQuery.of(context).size.height);
-            print(MediaQuery.of(context).size.width);
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => QuestionScreenPage()));
-          });
+          setState(
+            () {
+              _currentIndex = value;
+              index = _currentIndex;
+              print(MediaQuery.of(context).size.height);
+              print(MediaQuery.of(context).size.width);
+              /* Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QuestionScreenPage(),
+                ),
+              ); */
+              switch (index) {
+                case 0:
+                  Get.toNamed('/home');
+                  break;
+                case 1:
+                  Get.toNamed('/question-screen');
+                  break;
+                case 2:
+                  Get.toNamed('/student-list-screen');
+                  break;
+                case 3:
+                  Get.toNamed('/user-list-page');
+                  break;
+                default:
+                  Get.toNamed('/home');
+              }
+            },
+          );
         },
         items: const [
           BottomNavigationBarItem(
