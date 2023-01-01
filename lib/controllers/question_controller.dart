@@ -4,7 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
 
 class QuestionController {
-  Future<List> getAllStudents() async {
+  Future<List> getAllQuestions() async {
     //String baseUrl = "https://poralekha.prosolver.org/poralekha/api/questions";
     String baseUrl = "http://127.0.0.1:8000/api/questions";
 
