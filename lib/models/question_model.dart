@@ -1,6 +1,6 @@
 class QuestionModel {
   QuestionModel({
-    this.id,
+    //this.id,
     required this.question,
     required this.a,
     required this.b,
@@ -12,17 +12,22 @@ class QuestionModel {
   });
 
   QuestionModel.fromJson(dynamic json) {
-    id = json['id'];
-    question = json['question'];
-    a = json['A'];
-    b = json['B'];
-    c = json['C'];
-    d = json['D'];
-    answer = json['Answer'];
-    createdAt = json['created_at'];
-    updatedAt = json['updated_at'];
+    //id = json['id'];
+    //id = json['id'].toString();
+    //id = json['id'] as String;
+    //id = json['id'];
+    //question = json['question'];
+    question = json['question'] as String;
+    a = json['A'] as String;
+    b = json['B'] as String;
+    c = json['C'] as String;
+    d = json['D'] as String;
+    answer = json['Answer'] as String;
+    createdAt = json['created_at'] as String;
+    updatedAt = json['updated_at'] as String;
   }
-  int? id;
+  //int? id;
+  String? id;
   String? question;
   String? a;
   String? b;
@@ -34,7 +39,8 @@ class QuestionModel {
 
   Map<String, dynamic> toJson() {
     final map = <String, dynamic>{};
-    map['id'] = id;
+    //map['id'] = id;
+    //map['id'] = id as String;
     map['question'] = question;
     map['A'] = a;
     map['B'] = b;

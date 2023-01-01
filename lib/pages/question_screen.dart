@@ -1,13 +1,17 @@
 import 'dart:collection';
+import 'dart:convert';
+import 'package:collection/collection.dart';
 
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pora_lekha/controllers/question_controller.dart';
+//import 'package:pora_lekha/db/question-model/question_model.dart';
+import '../models/question_model2.dart';
 import 'package:pora_lekha/utils/dimensions/Dimensions.dart';
 import 'package:http/http.dart' as http;
 
-import '../models/question_model.dart';
+//import '../models/question_model.dart';
 
 //import '../db/question-model/question_model.dart';
 
@@ -33,6 +37,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
     //List<String> answers = [];
 
     return Scaffold(
+      appBar: AppBar(),
       body: FutureBuilder(
         initialData: const [],
         future: questionController.getAllQuestions(),
@@ -190,7 +195,19 @@ class _QuestionScreenState extends State<QuestionScreen> {
             var response = await http.get(Uri.parse(baseUrl));
             /* QuestionModel questionModel = QuestionModel.fromJson(response.body);
             print(questionModel); */
-            print(response.body);
+            //print(response.body);
+            var resBody = response.body;
+            //print(resBody[3].toString());
+            //print(resBody[o]);  //[
+            //print(resBody[3]);  //i
+            //print(resBody[2]); //"
+            //print(resBody.length); //573
+            //print(resBody.length);
+
+            //Question questionModel =Question();
+
+            Question questions = Question.fromJson(resBody);
+            print(questions);
 
             return;
           }
