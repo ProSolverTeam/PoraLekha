@@ -5,6 +5,11 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pora_lekha/controllers/question_controller.dart';
 import 'package:pora_lekha/utils/dimensions/Dimensions.dart';
+import 'package:http/http.dart' as http;
+
+import '../models/question_model.dart';
+
+//import '../db/question-model/question_model.dart';
 
 // List<String> groupValues = [];
 
@@ -48,6 +53,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
           return ListView.builder(
             itemCount: snapshot.data!.length, //5, //snapshot.data!.length,
             itemBuilder: (context, index) {
+              groupValuesFixedLengthList[index] =
+                  snapshot.data![index]['question'];
+
+              answersFixedLengthList[index] = snapshot.data![index]['Answer'];
+
               //String groupValue = snapshot.data![index]['question'];
               //groupValues.add(snapshot.data![index]['question']);
 
@@ -73,8 +83,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
                             snapshot.data![index]['A'],
                           ),
                           value: snapshot.data![index]['A'],
-                          groupValue: snapshot.data![index]
-                              ['question'], //groupValues[index],
+                          groupValue: groupValuesFixedLengthList[
+                              index], //groupValues[index],
+                          /* snapshot.data![index]
+                              ['question'],  */ //groupValues[index],
                           onChanged: (value) {
                             setState(() {
                               //groupValues[index] = value.toString();
@@ -86,8 +98,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
                               /* groupValues.removeAt(index);
                               groupValues.add(value); */
                               //answers.add(snapshot.data![index]['Answer']);
-                              groupValuesFixedLengthList[index] =
-                                  value.toString();
+                              groupValuesFixedLengthList[index] = value;
+                              //value.toString();
                               answersFixedLengthList[index] =
                                   snapshot.data![index]['Answer'];
                             });
@@ -173,9 +185,21 @@ class _QuestionScreenState extends State<QuestionScreen> {
       floatingActionButton: FloatingActionButton(
         tooltip: "Go to Home",
         onPressed: () {
+          Future<void> getQuestionsMapsList() async {
+            String baseUrl = "http://127.0.0.1:8000/api/questions";
+            var response = await http.get(Uri.parse(baseUrl));
+            /* QuestionModel questionModel = QuestionModel.fromJson(response.body);
+            print(questionModel); */
+            print(response.body);
+
+            return;
+          }
+
+          getQuestionsMapsList();
+
           double mark = 0.0;
-          print(groupValues);
-          print(answers);
+          //print(groupValues);
+          //print(answers);
           //print(questionController.getAllQuestions());
 
           /* for (int i = 0; i < 4 /* groupValues.length */; i++) {

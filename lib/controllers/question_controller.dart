@@ -2,6 +2,7 @@ import 'dart:convert';
 
 import 'package:flutter/foundation.dart';
 import 'package:http/http.dart' as http;
+import 'package:pora_lekha/db/question-model/question_model.dart';
 
 class QuestionController {
   Future<List> getAllQuestions() async {
@@ -25,4 +26,12 @@ class QuestionController {
       return Future.error(e);
     }
   }
+
+  /* Future<List<Map<String, dynamic>>> getQuestionsMapsList() async {
+    String baseUrl = "http://127.0.0.1:8000/api/questions";
+    var response = await http.get(Uri.parse(baseUrl));
+    QuestionModel questionModel = QuestionModel.fromJson(response.body.);
+
+    return questionModel;
+  } */
 }
