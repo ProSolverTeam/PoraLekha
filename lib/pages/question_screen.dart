@@ -50,6 +50,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
           print(groupValuesFixedLengthList);
           print(answersFixedLengthList);
 
+          groupValuesFixedLengthList[1] = 'ggg';
+          print(groupValuesFixedLengthList);
+
           answers = [];
           answers = answersFixedLengthList;
           groupValues = [];
@@ -58,10 +61,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
           return ListView.builder(
             itemCount: snapshot.data!.length, //5, //snapshot.data!.length,
             itemBuilder: (context, index) {
+              //print(groupValuesFixedLengthList);
+              /* 
               groupValuesFixedLengthList[index] =
                   snapshot.data![index]['question'];
 
-              answersFixedLengthList[index] = snapshot.data![index]['Answer'];
+              answersFixedLengthList[index] = snapshot.data![index]['Answer']; */
 
               //String groupValue = snapshot.data![index]['question'];
               //groupValues.add(snapshot.data![index]['question']);
@@ -87,9 +92,10 @@ class _QuestionScreenState extends State<QuestionScreen> {
                           title: Text(
                             snapshot.data![index]['A'],
                           ),
-                          value: snapshot.data![index]['A'],
-                          groupValue: groupValuesFixedLengthList[
-                              index], //groupValues[index],
+                          value: 3, //snapshot.data![index]['A'],
+                          groupValue: groupValuesFixedLengthList[index], //3,
+                          /* groupValuesFixedLengthList[
+                              index],  */ //groupValues[index],
                           /* snapshot.data![index]
                               ['question'],  */ //groupValues[index],
                           onChanged: (value) {
@@ -103,7 +109,12 @@ class _QuestionScreenState extends State<QuestionScreen> {
                               /* groupValues.removeAt(index);
                               groupValues.add(value); */
                               //answers.add(snapshot.data![index]['Answer']);
-                              groupValuesFixedLengthList[index] = value;
+                              //groupValuesFixedLengthList[index] = value;
+                              /* groupValuesFixedLengthList[index] =
+                                  snapshot.data![index]['A']; */
+                              groupValuesFixedLengthList[index] =
+                                  value.toString();
+
                               //value.toString();
                               answersFixedLengthList[index] =
                                   snapshot.data![index]['Answer'];
@@ -208,6 +219,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
 
             Question questions = Question.fromJson(resBody);
             print(questions);
+
+            print(groupValues);
 
             return;
           }
