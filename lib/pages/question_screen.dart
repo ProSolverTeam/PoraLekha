@@ -18,9 +18,9 @@ class _QuestionScreenState extends State<QuestionScreen> {
   void initState() {
     super.initState();
     questionController.getAllQuestions().then((value) {
-      value.forEach((element) {
+      for (var element in value) {
         groupVal.add(element['question']);
-      });
+      }
     });
   }
 
