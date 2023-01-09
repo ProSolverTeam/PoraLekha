@@ -11,6 +11,7 @@ class QuestionScreen extends StatefulWidget {
 }
 
 class _QuestionScreenState extends State<QuestionScreen> {
+  List<String> questionVal = [];
   List<String> groupVal = [];
   List<String> answerVal = [];
   QuestionController questionController = QuestionController();
@@ -18,6 +19,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
   @override
   void initState() {
     super.initState();
+    questionController.getAllQuestions().then((value) {
+      for (var element in value) {
+        questionVal.add(element['question']);
+      }
+    });
     questionController.getAllQuestions().then((value) {
       for (var element in value) {
         groupVal.add(element['question']);
@@ -28,6 +34,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         answerVal.add(element['Answer']);
       }
     });
+    //questionVal = groupVal;
   }
 
   @override
@@ -114,11 +121,15 @@ class _QuestionScreenState extends State<QuestionScreen> {
         tooltip: "Go to Home",
         onPressed: () {
           double mark = 0.0;
+          print(questionVal);
           print(groupVal);
           print(answerVal);
+
           for (int i = 0; i < groupVal.length; i++) {
             if (groupVal[i] == answerVal[i]) {
               mark++;
+            } else if (groupVal[i] == questionVal[i]) {
+              mark = mark;
             } else {
               mark = mark - 1 / 4;
             }
