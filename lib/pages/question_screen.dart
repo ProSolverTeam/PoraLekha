@@ -12,6 +12,7 @@ class QuestionScreen extends StatefulWidget {
 
 class _QuestionScreenState extends State<QuestionScreen> {
   List<String> groupVal = [];
+  List<String> answerVal = [];
   QuestionController questionController = QuestionController();
 
   @override
@@ -20,6 +21,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
     questionController.getAllQuestions().then((value) {
       for (var element in value) {
         groupVal.add(element['question']);
+      }
+    });
+    questionController.getAllQuestions().then((value) {
+      for (var element in value) {
+        answerVal.add(element['Answer']);
       }
     });
   }
@@ -107,7 +113,17 @@ class _QuestionScreenState extends State<QuestionScreen> {
       floatingActionButton: FloatingActionButton(
         tooltip: "Go to Home",
         onPressed: () {
+          double mark = 0.0;
           print(groupVal);
+          print(answerVal);
+          for (int i = 0; i < groupVal.length; i++) {
+            if (groupVal[i] == answerVal[i]) {
+              mark++;
+            } else {
+              mark = mark - 1 / 4;
+            }
+          }
+          print(mark);
         },
         child: const Icon(Icons.home_filled),
       ),
