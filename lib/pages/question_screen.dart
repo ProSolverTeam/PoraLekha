@@ -106,19 +106,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
       ),
       floatingActionButton: FloatingActionButton(
         tooltip: "Go to Home",
-        onPressed: () /* ß */ {
-          Future<void> getQuestionsMapsList() async {
-            String baseUrl = "http://127.0.0.1:8000/api/questions";
-            var response = await http.get(Uri.parse(baseUrl));
-
-            var resBody = response.body;
-
-            Question questions = Question.fromJson(resBody);
-
-            return;
-          }
-
-          getQuestionsMapsList();
+        onPressed: () {
+          print(groupVal);
         },
         child: const Icon(Icons.home_filled),
       ),
