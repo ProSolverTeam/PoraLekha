@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:pora_lekha/controllers/question_controller.dart';
+import 'package:pora_lekha/pages/result/index.dart';
 import '../models/question_model2.dart';
 import 'package:http/http.dart' as http;
+import 'package:get/get.dart';
 
 class QuestionScreen extends StatefulWidget {
   const QuestionScreen({super.key});
@@ -118,7 +120,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         },
       ),
       floatingActionButton: FloatingActionButton(
-        tooltip: "Go to Home",
+        tooltip: "Go to Result Screen",
         onPressed: () {
           double mark = 0.0;
           print(questionVal);
@@ -135,6 +137,11 @@ class _QuestionScreenState extends State<QuestionScreen> {
             }
           }
           print(mark);
+
+          ResultState.mark = RxDouble(mark);
+          ResultState.groupValues = groupVal;
+
+          Get.toNamed('/result-screen');
         },
         child: const Icon(Icons.home_filled),
       ),
