@@ -52,65 +52,86 @@ class _QuestionScreenState extends State<QuestionScreen> {
             itemBuilder: (context, index) {
               return Column(
                 children: [
-                  Container(
-                    color: Colors.amber,
-                    padding: const EdgeInsets.all(20),
-                    child: Column(
-                      children: [
-                        Text(
-                          snapshot.data![index]['question'],
-                          style: const TextStyle(fontSize: 18),
-                        ),
-                        const Divider(),
-                        RadioListTile(
-                          title: Text(
-                            snapshot.data![index]['A'],
+                  Card(
+                    clipBehavior: Clip.hardEdge,
+                    //color: Colors.grey,
+                    //color: const Color.fromARGB(103, 013, 130, 310),
+                    //color: const Color.fromRGBO(013, 130, 301, 031),
+                    //color: Color(0xAACCDDBB),
+                    //color: Color(hashCode),
+                    //color: Color.fromARGB(a, r, g, b),
+                    //color: Color(0xFFaabbcc),
+                    //color: Color(0xFFAA00BB),
+                    //color: Colors.greenAccent,
+                    //color: const Color(0xFF42A5F5),
+                    //color: const Color.fromARGB(0xFF, 0x42, 0xA5, 0xF5),
+                    //color: const Color.fromARGB(255, 66, 15, 13),
+                    //color: const Color.fromRGBO(66, 165, 213, 013),
+                    //color: const Color(0xFFFFFF), //; // fully,
+                    //color: const Color(0xFFFFFFFF), //; // full,
+                    color: const Color.fromRGBO(66, 165, 213, 013),
+
+                    child: Container(
+                      //color: Colors.limeAccent[400], //Colors.amber,
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        children: [
+                          Text(
+                            "(${snapshot.data![index]['id']})       "
+                            "${snapshot.data![index]['question']}",
+                            style: const TextStyle(fontSize: 18),
                           ),
-                          value: snapshot.data![index]['A'],
-                          groupValue: groupVal[index],
-                          onChanged: (value) {
-                            setState(() {
-                              groupVal[index] = value;
-                            });
-                          },
-                        ),
-                        RadioListTile(
-                          title: Text(
-                            snapshot.data![index]['B'],
+                          const Divider(),
+                          RadioListTile(
+                            title: Text(
+                              snapshot.data![index]['A'],
+                            ),
+                            value: snapshot.data![index]['A'],
+                            groupValue: groupVal[index],
+                            onChanged: (value) {
+                              setState(() {
+                                groupVal[index] = value;
+                              });
+                            },
                           ),
-                          value: snapshot.data![index]['B'],
-                          groupValue: groupVal[index],
-                          onChanged: (value) {
-                            setState(() {
-                              groupVal[index] = value;
-                            });
-                          },
-                        ),
-                        RadioListTile(
-                          title: Text(
-                            snapshot.data![index]['C'],
+                          RadioListTile(
+                            title: Text(
+                              snapshot.data![index]['B'],
+                            ),
+                            value: snapshot.data![index]['B'],
+                            groupValue: groupVal[index],
+                            onChanged: (value) {
+                              setState(() {
+                                groupVal[index] = value;
+                              });
+                            },
                           ),
-                          value: snapshot.data![index]['C'],
-                          groupValue: groupVal[index],
-                          onChanged: (value) {
-                            setState(() {
-                              groupVal[index] = value;
-                            });
-                          },
-                        ),
-                        RadioListTile(
-                          title: Text(
-                            snapshot.data![index]['D'],
+                          RadioListTile(
+                            title: Text(
+                              snapshot.data![index]['C'],
+                            ),
+                            value: snapshot.data![index]['C'],
+                            groupValue: groupVal[index],
+                            onChanged: (value) {
+                              setState(() {
+                                groupVal[index] = value;
+                              });
+                            },
                           ),
-                          value: snapshot.data![index]['D'],
-                          groupValue: groupVal[index],
-                          onChanged: (value) {
-                            setState(() {
-                              groupVal[index] = value;
-                            });
-                          },
-                        ),
-                      ],
+                          RadioListTile(
+                            title: Text(
+                              snapshot.data![index]['D'],
+                            ),
+                            value: snapshot.data![index]['D'],
+                            groupValue: groupVal[index],
+                            onChanged: (value) {
+                              setState(() {
+                                groupVal[index] = value;
+                              });
+                            },
+                          ),
+                        ],
+                      ),
                     ),
                   ),
                 ],
