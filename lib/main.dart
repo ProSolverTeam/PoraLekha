@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:pora_lekha/QuestionScreen/QuestionScreen_bindings.dart';
 import 'package:pora_lekha/pages/home.dart';
+import 'package:pora_lekha/pages/question_insert_screen.dart';
 import 'package:pora_lekha/pages/result/index.dart';
 import 'package:pora_lekha/pages/student_list_screen.dart';
 import 'firebase_options.dart';
@@ -47,7 +48,12 @@ Future<void> main() async {
           name: '/result-screen',
           page: () => const ResultScreen(),
           binding: QuestionScreenBindings(),
-        )
+        ),
+        GetPage(
+          name: '/question-insert-screen',
+          page: () => const QuestionInsertScreen(),
+          binding: QuestionScreenBindings(),
+        ),
       ],
     ),
   );

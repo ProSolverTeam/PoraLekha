@@ -163,7 +163,8 @@ class _QuestionScreenState extends State<QuestionScreen> {
           ResultState.mark = RxDouble(mark);
           ResultState.groupValues = groupVal;
 
-          Get.toNamed('/result-screen');
+          //Get.toNamed('/result-screen');
+          Get.toNamed('/question-insert-screen');
         },
         child: const Icon(Icons.home_filled),
       ),
