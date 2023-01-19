@@ -63,7 +63,8 @@ class Question {
     required this.answer,
   });
 
-  factory Question.fromJson(Map<String, dynamic> json) {
+  factory Question.fromJson(
+      Map<String, dynamic /* String */ /* String  */ /* dynamic */ > json) {
     return Question(
       //id: json['id'],
       //title: json['title'],
@@ -174,6 +175,7 @@ class _QuestionInsertScreenState extends State<QuestionInsertScreen> {
         if (snapshot.hasData) {
           return Text(snapshot.data!.question);
         } else if (snapshot.hasError) {
+          print(snapshot);
           return Text('${snapshot.error}');
         }
 
