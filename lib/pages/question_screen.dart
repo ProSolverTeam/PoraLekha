@@ -48,7 +48,7 @@ class _QuestionScreenState extends State<QuestionScreen> {
         future: questionController.getAllQuestions(),
         builder: (context, snapshot) {
           return ListView.builder(
-            itemCount: snapshot.data!.length,
+            itemCount: snapshot.data?.length ?? 0,
             itemBuilder: (context, index) {
               return Column(
                 children: [

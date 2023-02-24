@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:convert';
 
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'package:get/get.dart';
@@ -19,7 +20,7 @@ Future<Question> createQuestion(
     headers: <String, String>{
       'Content-Type': 'application/json; charset=UTF-8',
     },
-    body: jsonEncode(<String, String>{
+    body: jsonEncode(<String, dynamic /* String */ >{
       //'title': title,
       'question': question,
       'a': a,
@@ -170,12 +171,14 @@ class _QuestionInsertScreenState extends State<QuestionInsertScreen> {
 
   FutureBuilder<Question> buildFutureBuilder() {
     return FutureBuilder<Question>(
-      future: _futureQuestion,
+      future: _futureQuestion!,
       builder: (context, snapshot) {
         if (snapshot.hasData) {
-          return Text(snapshot.data!.question);
+          return Text(snapshot.data!.question.toString());
         } else if (snapshot.hasError) {
-          print(snapshot);
+          if (kDebugMode) {
+            print('snapshot: $snapshot');
+          }
           return Text('${snapshot.error}');
         }
 
